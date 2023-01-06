@@ -1,10 +1,8 @@
-Sample Module Repository
+VBMC
 ========================
 
-This simple project is an example repo for Python projects.
+This project uses voxel-based Monte Carlo simulations to calculate light transport in diffuse media.
 
-`Learn more <http://www.kennethreitz.org/essays/repository-structure-and-python>`_.
+`Learn more <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9116466/>`_.
 
 ---------------
-
-If you want to learn more about ``setup.py`` files, check out `this repository <https://github.com/kennethreitz/setup.py>`_.
