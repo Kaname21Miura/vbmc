@@ -14,13 +14,13 @@ def test_single():
     assert model.build()
     assert model.start()
     res = model.get_result()
-    Rd_index = np.where(res['v'][2] < 0)[0]
-    Td_index = np.where(res['v'][2] > 0)[0]
+    Rd_index = np.where(res['v'][:,2] < 0)[0]
+    Td_index = np.where(res['v'][:,2] > 0)[0]
     alpha,rda = angularyResolved(
-        res['v'][:,Rd_index],res['w'][Rd_index],nPh,30
+        res['v'][Rd_index],res['w'][Rd_index],nPh,30
     )
     alpha,tda = angularyResolved(
-        res['v'][:,Td_index],res['w'][Td_index],nPh,30
+        res['v'][Td_index],res['w'][Td_index],nPh,30
     )
     assert rda.dtype == np.float64
     assert tda.dtype == np.float64
@@ -50,16 +50,16 @@ def test_multiple():
     model.start()
 
     res = model.get_result()
-    Rd_index = np.where(res['v'][2] < 0)[0]
-    Td_index = np.where(res['v'][2] > 0)[0]
+    Rd_index = np.where(res['v'][:,2] < 0)[0]
+    Td_index = np.where(res['v'][:,2] > 0)[0]
 
     dr = 0.005
     nn = 100
     rr,Rd_r = spatiallyResolved(
-        res['p'][:,Rd_index],res['w'][Rd_index],nPh,nn,dr
+        res['p'][Rd_index],res['w'][Rd_index],nPh,nn,dr
     )
     rr,Td_r = spatiallyResolved(
-        res['p'][:,Td_index],res['w'][Td_index],nPh,nn,dr
+        res['p'][Td_index],res['w'][Td_index],nPh,nn,dr
     )
     assert abs(np.mean(np.log(df2.Rd_r.values)-np.log(Rd_r))) < .005
     assert abs(np.mean(np.log(df2.Td_r.values)-np.log(Td_r))) < .005

@@ -238,8 +238,8 @@ class BaseVoxelMonteCarlo(metaclass = ABCMeta):
     def get_result(self):
         encoded_position = self._encooder(self.p_result,self.add_result)
         df_result = {
-            'p':encoded_position,
-            'v':self.v_result,
+            'p':encoded_position.T,
+            'v':self.v_result.T,
             'w':self.w_result,
             'nPh':self.nPh
         }
