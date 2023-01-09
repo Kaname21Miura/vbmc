@@ -6,6 +6,12 @@ Created on Thu Jan 22 18:14:23 2022
 """
 import numpy as np
 from numba import njit
+@njit(fastmath=True)
+def isnan(x):
+    if int(x) == -9223372036854775808:
+        return True
+    else:
+        return False
 
 @njit(fastmath=True)
 def vmc_kernel(
@@ -42,10 +48,10 @@ def vmc_kernel(
         nt = np.float32(0)
         mt = np.float32(ma[index_] + ms[index_])
         st = np.float32(0)
-
         while True:
             if st == 0:
                 st = np.float32(-np.log(np.random.rand()))
+
 
             valf = 0.; dbnum = 0; db = 1000.
             for i in range(3):
@@ -86,7 +92,6 @@ def vmc_kernel(
                             v[i,idx] = one_vec[i]*v[i,idx]*ni/nt\
                             +zero_vec[i] * np.sign(v[i,idx]) * np.cos(at)
                             zero_vec[i] = 0; one_vec[i] = 1
-
                         valf = np.sqrt(v[0,idx]**2+v[1,idx]**2+v[2,idx]**2)
                         for i in range(3):
                             v[i,idx] /= valf
@@ -125,29 +130,31 @@ def vmc_kernel(
             g_ = g[index_]
             if g_ != 0.:
                 cos_th = (1+g_**2-((1-g_**2)/(1-g_+2*g_*np.random.rand()))**2)/(2*g_)
+                if abs(cos_th)>=1:
+                    cos_th = np.sign(cos_th)
             else:
-                cos_th = 2*np.random.rand() - 1
+                cos_th = 2*np.random.rand()- 1
+                
             sin_th = np.sqrt(1-cos_th**2)
 
             fi = 2 * np.pi*np.float32(np.random.rand())
             cos_fi = np.cos(fi)
             sin_fi = np.sin(fi)
-
             if 0.99999 < abs(v[2,idx]):
                 v[0,idx] = sin_th * cos_fi
                 v[1,idx] = sin_th * sin_fi
                 v[2,idx] = np.sign(v[2,idx]) * cos_th
-
             else:
                 valf = np.sqrt(1 - v[2,idx]**2)
                 v_ = v[:,idx].copy()
                 v[0,idx] = sin_th * (v_[0] * v_[2] * cos_fi - v_[1] * sin_fi) / valf + v_[0] * cos_th
                 v[1,idx] = sin_th * (v_[1] * v_[2] * cos_fi + v_[0] * sin_fi) / valf + v_[1] * cos_th
                 v[2,idx] = -sin_th * cos_fi * valf + v_[2] * cos_th
-
+            if isnan(v[2,idx]): assert False, 'v is nan'
             valf = np.sqrt(v[0,idx]**2+v[1,idx]**2+v[2,idx]**2)
             for i in range(3):
                 v[i,idx] /= valf
+
 
         flag_end = False
         if idx%counter == 0:

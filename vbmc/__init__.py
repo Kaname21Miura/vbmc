@@ -3,7 +3,7 @@ from ._classes import vbmc
 from .validation import _deprecate_positional_args
 from .utilities import calTime,set_params,ToJsonEncoder
 from .utilities import open_pklbz2_file, open_jason_file
-from .score import angularyResolved,spatiallyResolved
+from ._score import angularyResolved,spatiallyResolved
 
 __all__ = [
     'vmc_kernel',

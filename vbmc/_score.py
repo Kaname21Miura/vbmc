@@ -13,7 +13,7 @@ def angularyResolved(v,w,nPh,nn):
     at = np.arccos(abs(v[2])) # 光子の射出角度
     ar = []
     for i in range(nn):
-        index = np.where((alpha_[i] < at)&(alpha_[i+1] >= at))
+        index = np.where((alpha_[i] < at)&(alpha_[i+1] >= at))[0]
         ar.append(w[index].sum())
     return alpha,np.array(ar)/(do*nPh)
 
@@ -26,6 +26,6 @@ def spatiallyResolved(p,w,nPh,nn,dr):
     r = np.sqrt(p[0]**2 + p[1]**2)
     sr = []
     for i in range(nn):
-        index = np.where((rr_[i] < r)&(rr_[i+1]>=r))
+        index = np.where((rr_[i] < r)&(rr_[i+1]>=r))[0]
         sr.append(w[index].sum())
     return rr,np.array(sr)/nPh/da

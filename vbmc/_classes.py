@@ -341,7 +341,7 @@ class VoxelModel:
             }
         self.keys = list(self.params.keys())
         self._param_instantiating()
-        self.voxel_model = np.zeros((500,500,1),dtype = self.dtype)
+        self.voxel_model = np.zeros((1000,1000,1),dtype = self.dtype)
 
     def _param_instantiating(self):
         f = self.dtype_f
@@ -434,6 +434,7 @@ class vbmc(BaseVoxelMonteCarlo):
 
     def set_params(self,*initial_data, **kwargs):
         self.model.set_params(*initial_data, **kwargs)
+        return self
 
     def get_model_fig(self,*,dpi=300,save_path = [False,False],):
         image = self.model.voxel_model
