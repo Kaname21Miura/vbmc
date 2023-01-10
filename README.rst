@@ -1,4 +1,4 @@
-VBMC
+VMC
 ========================
 
 This project uses voxel-based Monte Carlo simulations to calculate light transport in diffuse media.
