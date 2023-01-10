@@ -2,7 +2,8 @@ vmc
 ========================
 |version| |license|
 
-vmc is under development.<\br>
+vmc is under development.
+
 This project uses voxel-based Monte Carlo simulations to calculate light transport in diffuse media.
 
 INSTALLATION
