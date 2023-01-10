@@ -1,5 +1,5 @@
-from vbmc import vbmc
-from vbmc import angularyResolved,spatiallyResolved
+from vmc import vmc
+from vmc import angularyResolved,spatiallyResolved
 import numpy as np
 import matplotlib.pyplot as plt
 

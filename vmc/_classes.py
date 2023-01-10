@@ -17,7 +17,7 @@ import gc
 #warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 __all__ = [
-'vbmc',
+'vmc',
 ]
 
 # =============================================================================
@@ -393,7 +393,7 @@ class VoxelModel:
 # Public montecalro model
 # =============================================================================
 
-class vbmc(BaseVoxelMonteCarlo):
+class vmc(BaseVoxelMonteCarlo):
     def __init__(
         self,*,nPh=5e4,dtype_f=np.float32,dtype=np.int32,
         beam_type = 'TEM00',w_beam = 0,

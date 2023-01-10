@@ -1,4 +1,4 @@
-from vbmc import vbmc
+from vmc import vmc
 
 def test_vbmc():
     model = vbmc(nPh = 1e5)
