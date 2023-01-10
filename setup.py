@@ -18,9 +18,14 @@ def read_requirements():
         requirements = [line.rstrip() for line in f]
     return requirements
 
+with open(os.path.join('vmc', '__init__.py'), 'r', encoding='utf8') as f:
+    version = re.compile(r".*__version__ = '(.*?)'",
+                         re.S).match(f.read()).group(1)
+
 setup(
     name='vbmc',
     version='0.0.0',
+    license='MIT License',
     description='CPU version of Voxel-based Monte Carlo simulation',
     long_description=readme,
     author='Kaname Miura',
