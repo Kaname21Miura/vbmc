@@ -109,7 +109,7 @@ class BaseVoxelMonteCarlo(metaclass = ABCMeta):
         self.add[0] = self._get_center_add(self.model.voxel_model.shape[0])
         self.add[1] = self._get_center_add(self.model.voxel_model.shape[1])
         if self.first_layer_clear:
-            self.add[2] = self.model.get_second_layer_addz()
+            self.add[2] = self.first_layer_clear+1
         else:
             self.add[2] = 1
 
@@ -258,11 +258,18 @@ class BaseVoxelMonteCarlo(metaclass = ABCMeta):
         encoded_position[2] = np.round(space*(add[2]-1)+p[2]+space/2,6)
         return encoded_position
 
-    def set_monte_params(self,*,nPh, dtype_f=np.float32, dtype=np.int32,w_beam = 0):
-        self.dtype_f = dtype_f
-        self.dtype = dtype
+    def set_monte_params(
+            self,*,
+            nPh = 5e4, #　Enter the number of photons.
+            w_beam = 0, # Enter the beam radius for TEM00. The scale depends on the units of optical properties.
+            beam_angle = 0, # Type in radian.
+            first_layer_clear = False, # Type the first sequence number of the second layer along the z-axis.
+        ):
         self.nPh = nPh
         self.w_beam = w_beam
+        self.beam_angle = beam_angle
+        self.first_layer_clear = first_layer_clear
+        return self
 
     def build(self,*initial_data, **kwargs):
         if initial_data == () and kwargs == {}:
@@ -337,7 +344,7 @@ class VoxelModel:
             'ma':[10],
             'ms':[90],
             'g':[0.75],
-            'end_point':False,
+            'end_point':False, #Basically, set it to False.
             }
         self.keys = list(self.params.keys())
         self._param_instantiating()
@@ -395,18 +402,21 @@ class VoxelModel:
 
 class vmc(BaseVoxelMonteCarlo):
     def __init__(
-        self,*,nPh=5e4,dtype_f=np.float32,dtype=np.int32,
-        beam_type = 'TEM00',w_beam = 0,
-        beam_angle = 0,initial_refrect_by_angle = False,
-        first_layer_clear = False,
+            self,*,
+            nPh = 5e4, #　Enter the number of photons.
+            w_beam = 0, # Enter the beam radius for TEM00. The scale depends on the units of optical properties.
+            beam_angle = 0, # Type in radian.
+            first_layer_clear = False, # Type the first sequence number of the second layer along the z-axis.
         ):
-
+        beam_type = 'TEM00' # Only TEM00 is supported.
+        dtype_f=np.float32
+        dtype=np.int32
         model = VoxelModel()
 
         super().__init__(
             nPh = nPh, model = model,dtype_f=dtype_f,dtype=dtype,
             w_beam=w_beam,beam_angle = beam_angle,beam_type = beam_type,
-            initial_refrect_by_angle = initial_refrect_by_angle,
+            initial_refrect_by_angle = False,
             first_layer_clear=first_layer_clear,
         )
 

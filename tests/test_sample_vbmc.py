@@ -4,9 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# This is sample code for vbmc.
+# This is sample code for vmc.
 #
-# vbmc can compute diffuse light transport
+# vmc can compute diffuse light transport
 # for any voxel model. The voxel model is
 # a 3-dimensional array, and integer voxel
 # values from 0 to 255 are allowed. The voxel
@@ -37,7 +37,7 @@ import matplotlib.pyplot as plt
 # URL: https://omlc.org/software/mc/mcml/MCman.pdf
 
 nPh = 1e6
-model = vbmc(nPh = nPh)
+model = vmc(nPh = nPh)
 params = {
         'n':[1.37,1.37,1.37],
         'n_air':1.,
@@ -58,7 +58,7 @@ model.set_params(**params)
 # model build
 model.build()
 
-# start vbmc calculation
+# start vmc calculation
 model.start()
 
 # get_result()
@@ -85,6 +85,7 @@ res = model.get_result()
 Rd_index = np.where(res['v'][:,2] < 0)[0] # Index of diffuse reflected photons
 Td_index = np.where(res['v'][:,2] > 0)[0] # Index of diffuse transmitted photons
 
+##### View Results #####
 #
 # Spatially resolved diffuse reflectance and transmittance
 #

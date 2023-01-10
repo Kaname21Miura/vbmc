@@ -9,7 +9,7 @@ df2 = pa.read_csv('docs/mcml_result_multilayer_rdr_tdr.csv')
 
 def test_single():
     nPh = 1e6
-    model = vbmc(nPh = nPh)
+    model = vmc(nPh = nPh)
     assert model
     assert model.build()
     assert model.start()
@@ -29,7 +29,7 @@ def test_single():
 
 def test_multiple():
     nPh = 1e6
-    model = vbmc(nPh = nPh)
+    model = vmc(nPh = nPh)
     params = {
             'n':[1.37,1.37,1.37],
             'n_air':1.,
