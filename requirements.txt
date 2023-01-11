@@ -1,15 +1,3 @@
 numpy
 matplotlib
-abc
-datetime
-time
-json
-pickle
-bz2
 numba
-functools
-inspect
-warnings
-codecs
-os
-re

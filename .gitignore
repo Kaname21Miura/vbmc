@@ -5,3 +5,6 @@ __pycache__/
 vbmc/.DS_Store
 tests/.DS_Store
 vbmc.egg-info
+dist
+build
+.pytest_cache

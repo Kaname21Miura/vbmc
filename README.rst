@@ -1,7 +1,5 @@
 vbmc
 ========================
-|version| |license|
-
 vbmc is under development.
 
 This project uses voxel-based Monte Carlo simulations to calculate light transport in diffuse media.
@@ -159,6 +157,6 @@ USAGE
 NOTE
 ============
 
-`Learn more <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9116466/>`_.
+Reference
 
----------------
+`K.Miura et.al., "Optical bone densitometry robust to variation of soft tissue using machine learning techniques: validation by Monte Carlo simulation", JBO Vo.27(5),(2022) <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9116466/>`_.

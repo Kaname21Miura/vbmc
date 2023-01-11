@@ -9,7 +9,6 @@ from abc import ABCMeta, abstractmethod
 import datetime,time
 import json,pickle,bz2
 
-from .validation import _deprecate_positional_args
 from .utilities import calTime,set_params,ToJsonEncoder
 
 import gc
@@ -25,7 +24,6 @@ __all__ = [
 # =============================================================================
 
 class BaseVoxelMonteCarlo(metaclass = ABCMeta):
-    @_deprecate_positional_args
     @abstractmethod
     def __init__(self,*,nPh,model,dtype_f=np.float32,dtype=np.int32,
                  beam_type = 'TEM00',w_beam = 0,
