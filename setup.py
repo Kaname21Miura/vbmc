@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Learn more: https://github.com/kennethreitz/setup.py
-
 from setuptools import setup, find_packages
+from codecs import open
+import os
+import re
 
 
 with open('README.rst') as f:
@@ -32,6 +33,5 @@ setup(
     author_email='miukana21@gmail.com',
     install_requires=read_requirements(),
     url='https://github.com/Kaname21Miura/vbmc.git',
-    license=license,
     packages=find_packages(exclude=('tests', 'docs'))
 )
