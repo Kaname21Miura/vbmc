@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 vbmc/.DS_Store
 tests/.DS_Store
+vbmc.egg-info
