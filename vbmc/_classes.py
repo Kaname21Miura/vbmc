@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from ._kernel import vmc_kernel
+from ._kernel import vbmc_kernel
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,7 +17,7 @@ import gc
 #warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 __all__ = [
-'vmc',
+'vbmc',
 ]
 
 # =============================================================================
@@ -65,7 +65,7 @@ class BaseVoxelMonteCarlo(metaclass = ABCMeta):
         print("###### Start ######")
         print("")
         start_ = time.time()
-        self.add,self.p,self.v,self.w = vmc_kernel(
+        self.add,self.p,self.v,self.w = vbmc_kernel(
             self.add, self.p,self.v, self.w,
             self.model.ma, self.model.ms, self.model.n, self.model.g,
             self.model.voxel_model.astype(np.uint8), self.model.voxel_space,
@@ -400,7 +400,7 @@ class VoxelModel:
 # Public montecalro model
 # =============================================================================
 
-class vmc(BaseVoxelMonteCarlo):
+class vbmc(BaseVoxelMonteCarlo):
     def __init__(
             self,*,
             nPh = 5e4, #　Enter the number of photons.

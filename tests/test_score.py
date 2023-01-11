@@ -1,5 +1,5 @@
-from vmc import vmc
-from vmc import angularyResolved,spatiallyResolved
+from vbmc import vbmc
+from vbmc import angularyResolved,spatiallyResolved
 import numpy as np
 import pandas as pa
 
@@ -9,7 +9,7 @@ df2 = pa.read_csv('docs/mcml_result_multilayer_rdr_tdr.csv')
 
 def test_single():
     nPh = 1e6
-    model = vmc(nPh = nPh)
+    model = vbmc(nPh = nPh)
     assert model
     assert model.build()
     assert model.start()
@@ -29,7 +29,7 @@ def test_single():
 
 def test_multiple():
     nPh = 1e6
-    model = vmc(nPh = nPh)
+    model = vbmc(nPh = nPh)
     params = {
             'n':[1.37,1.37,1.37],
             'n_air':1.,

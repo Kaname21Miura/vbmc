@@ -14,7 +14,7 @@ def isnan(x):
         return False
 
 @njit(fastmath=True)
-def vmc_kernel(
+def vbmc_kernel(
     add, p,v, w, ma, ms, n, g,
     voxel_model, l,
     nPh, end_point
@@ -134,7 +134,7 @@ def vmc_kernel(
                     cos_th = np.sign(cos_th)
             else:
                 cos_th = 2*np.random.rand()- 1
-                
+
             sin_th = np.sqrt(1-cos_th**2)
 
             fi = 2 * np.pi*np.float32(np.random.rand())

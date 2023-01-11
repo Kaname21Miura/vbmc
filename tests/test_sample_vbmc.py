@@ -1,12 +1,12 @@
-from vmc import vmc
-from vmc import angularyResolved,spatiallyResolved
+from vbmc import vbmc
+from vbmc import angularyResolved,spatiallyResolved
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-# This is sample code for vmc.
+# This is sample code for vbmc.
 #
-# vmc can compute diffuse light transport
+# vbmc can compute diffuse light transport
 # for any voxel model. The voxel model is
 # a 3-dimensional array, and integer voxel
 # values from 0 to 255 are allowed. The voxel
@@ -37,7 +37,7 @@ import matplotlib.pyplot as plt
 # URL: https://omlc.org/software/mc/mcml/MCman.pdf
 
 nPh = 1e6
-model = vmc(nPh = nPh)
+model = vbmc(nPh = nPh)
 params = {
         'n':[1.37,1.37,1.37],
         'n_air':1.,
@@ -58,7 +58,7 @@ model.set_params(**params)
 # model build
 model.build()
 
-# start vmc calculation
+# start vbmc calculation
 model.start()
 
 # get_result()

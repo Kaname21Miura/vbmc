@@ -1,8 +1,8 @@
-from vmc import vmc
+from vbmc import vbmc
 import numpy as np
 
-def test_vmc():
-    model = vmc(nPh = 1e5)
+def test_vbmc():
+    model = vbmc(nPh = 1e5)
     assert model.build()
     assert model.start()
     Rd,Td = model.getRdTtRate()
@@ -10,7 +10,7 @@ def test_vmc():
     assert (Td>0.658)&(Td<0.663)
 
 def test_params_setting():
-    model = vmc(nPh = 100)
+    model = vbmc(nPh = 100)
     params = {
             'n':[1.37,1.37,1.37],
             'n_air':1.,
@@ -47,7 +47,7 @@ def test_params_setting():
 
 def test_wbeam():
     w_beam = 0.5
-    model = vmc(w_beam = w_beam,nPh = 1e5)
+    model = vbmc(w_beam = w_beam,nPh = 1e5)
     assert model.build()
     assert model.start()
 
@@ -55,13 +55,13 @@ def test_wbeam():
 def test_beam_angle():
     beam_angle = 0.174533
 
-    model = vmc(beam_angle = beam_angle,nPh = 100)
+    model = vbmc(beam_angle = beam_angle,nPh = 100)
     assert model.build()
     assert model.start()
 
 def test_first_layer_clear():
     first_layer_clear = 1
-    model = vmc(
+    model = vbmc(
         first_layer_clear = first_layer_clear,
         nPh = 100
         )
@@ -84,7 +84,7 @@ def test_first_layer_clear():
     assert model.start()
 
 def test_set_monte_params():
-    model = vmc(nPh = 100)
+    model = vbmc(nPh = 100)
     params = {
             'n':[1.37,1.37,1.37],
             'n_air':1.,
