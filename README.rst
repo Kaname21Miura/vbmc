@@ -159,4 +159,11 @@ NOTE
 
 Reference
 
-`K.Miura et.al., "Optical bone densitometry robust to variation of soft tissue using machine learning techniques: validation by Monte Carlo simulation", JBO Vo.27(5),(2022) <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9116466/>`_.
+K.Miura, A.Khantachawana and S.M.Tanaka,
+
+`"Optical bone densitometry robust to variation of soft tissue using machine learning techniques: validation by Monte Carlo simulation", JBO Vol.27(5) (2022) <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9116466/>`_.
+
+
+L.Wang, S.L.Jacques, L.Zheng,
+
+`"MCML - Monte Carlo modeling of light transport in multi-layered tissues", Biomedicine Vol.47(2) pp131-46 (1995) <https://pubmed.ncbi.nlm.nih.gov/7587160/>`
